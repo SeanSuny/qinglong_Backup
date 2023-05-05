@@ -54,7 +54,7 @@ def start():
     logger.info(f'创建备份文件: {retval}/{files_name}')
     if make_targz(files_name, retval):
         logger.info('备份文件压缩完成...开始上传至阿里云盘')
-        remote_folder = ali.get_file_by_path(f'{run_path}/{QLBK_BACKUPS_PATH}')  # 云盘目录
+        remote_folder = ali.get_folder_by_path(f'{QLBK_BACKUPS_PATH}')  # 云盘目录
         ali.sync_folder(f'{retval}/{QLBK_BACKUPS_PATH}/',  # 上传至网盘
                         flag=True,
                         remote_folder=remote_folder.file_id)
